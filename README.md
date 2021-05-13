@@ -10,8 +10,8 @@
  - Secondly it uses your own resources for proxying the data, so no worries about data leaks, (note : YOUR DEVICE IP will not be altered, so they remain visible.)
 
 ### Why CASSATA : 
- - #### The main idea behind CASSATA is to wrap your sever witha new IP of your local machine or mobile phone to access the data.
  ![](./readme_assets/cassata.png)
+ - #### The main idea behind CASSATA is to wrap your sever with the IP of your local machine or mobile phone to access the data.
 
 ### PROGRESS :
 - [x] Support for GET Requests   
