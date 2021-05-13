@@ -1,5 +1,5 @@
-# CASSATA
-## NODE JS express server proxy, that's set as easy as a cake 🍥 
+# CASSATA 🍥
+## A NODE JS express server proxy, that's set as easy as a cake. 
 
 ### Hosting your server in a different location and need to access the data is only available in your location, this is a goto solution if you want to set your proxies for ***FREE \**** ..
 
@@ -8,6 +8,10 @@
 ### IDEA :
  - The main idea is to use your own device IP in the location you need and access the data, and proxy them back to the server at a different location.
  - Secondly it uses your own resources for proxying the data, so no worries about data leaks, (note : YOUR DEVICE IP will not be altered, so they remain visible.)
+
+### Why CASSATA : 
+ - #### The main idea behind CASSATA is to wrap your sever witha new IP of your local machine or mobile phone to access the data.
+ ![](./readme_assets/cassata.png)
 
 ### PROGRESS :
 - [x] Support for GET Requests   
@@ -110,7 +114,7 @@
 
 ### USAGE (Client) 🐱
 - #### Once you have hosted your server, you can visit the proxy server room by just adding ```/proxyouter``` to the url of your server. Once done, this is what you will see.
-- ### CASSATA only allows one session per time, so once connected, another session of CASSATA will not be available until you terminate the session through RELOAD / Terminate Session.
+- ### ***CASSATA*** only allows one session per time, so once connected, another session of ***CASSATA*** will not be available until you terminate the session through RELOAD / Terminate Session.
     - ### Make sure you have your passwords safe, else you might want to change them in your server.
 - This is what it looks like on computers. ![](./readme_assets/userlogin.jpg)
 - The mobile version. <br/><img src="./readme_assets/userlogin_mob.jpg" height="400" />
@@ -129,3 +133,10 @@
     ![](./readme_assets/server_url.jpg)
 
 - ### The session will be persistant until you wish to reload / Until your server is up / Or you wish to terminate the session though Terminate session.
+
+
+background image of the proxyrouter : <a href="http://www.freepik.com">Designed by upklyak / Freepik</a>
+
+### Kindly feel free to raise PR for new updates, and issues if any.
+
+### Thankyou 💚 
