@@ -9,7 +9,7 @@
  - The main idea is to use your own device IP in the location you need and access the data, and proxy them back to the server at a different location.
  - Secondly it uses your own resources for proxying the data, so no worries about data leaks, (note : YOUR DEVICE IP will not be altered, so they remain visible.)
 
-### Why CASSATA : 
+### WHY CASSATA ? 
  ![](./readme_assets/cassata.png)
  - #### The main idea behind CASSATA is to wrap your sever with the IP of your local machine or mobile phone to access the data.
 
