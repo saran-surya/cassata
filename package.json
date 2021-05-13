@@ -1,0 +1,32 @@
+{
+  "name": "cassata",
+  "version": "1.0.0",
+  "description": "A package, to proxy the server to your current location",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saran-surya/idli.git"
+  },
+  "keywords": [
+    "proxy",
+    "server",
+    "idli",
+    "server-proxy",
+    "location",
+    "personal-proxy"
+  ],
+  "author": "SARAN SURYA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saran-surya/idli/issues"
+  },
+  "homepage": "https://github.com/saran-surya/idli#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.1.1"
+  },
+  "devDependencies": {}
+}
