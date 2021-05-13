@@ -22,9 +22,6 @@ let socketId;
 
 
 function isProxyConnected() {
-    if (!isRoom) {
-        console.log("\n >>> Use the method isProxyconnected() to check if the proxy end is connected")
-    }
     return isRoom;
 }
 
@@ -111,6 +108,7 @@ async function init() {
 function getProxiedData(url, timeout = 8000) {
     return new Promise((resolve, reject) => {
         if (!isProxyConnected()) {
+            console.log("\n >>> Use the method isProxyconnected() to check if the proxy end is connected")
             reject("Proxy server is not connected")
         }
         if (!isClosed && isCredentials && socketId) {
