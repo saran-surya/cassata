@@ -5,6 +5,12 @@
 
 (* Free) ~ You have to use your resources to login to your server proxy room and set them up, and nothing much 😸.
 
+### Overview
+ - [Quick Solution](#complete-example)
+ - [The IDEA](#idea)
+ - [Current progress and support](#progress)
+
+
 ### IDEA :
  - The main idea is to use your own device IP in the location you need and access the data, and proxy them back to the server at a different location.
  - Secondly it uses your own resources for proxying the data, so no worries about data leaks, (note : YOUR DEVICE IP will not be altered, so they remain visible.)
@@ -21,7 +27,7 @@
 ### INSTALLATION 🍰
 ### ```npm i --save cassata```
 
-### USAGE 👩‍💻 (SERVER setup)
+### Setting the PROXY (server) 👨‍💻
 - #### IMPORT the package.
   ```
   let cassata = require('cassata');
@@ -109,7 +115,7 @@
         console.log("Server started")
         // your initializations
     })
-- ### Complete Example 🦄
+- ### Complete Example
     ```
     //  Creating the express server
     const express = require('express');
@@ -150,7 +156,7 @@
     ```
 - ### That's it you have your proxy server, and you can host it in any location. 🛰 
 
-### USAGE (Client) 🐱
+### Accessing the Proxy (Client) 🐱
 - #### Once you have hosted your server, you can visit the proxy server room by just adding ```/proxyouter``` to the url of your server. Once done, this is what you will see.
 - ### ***CASSATA*** only allows one session per time, so once connected, another session of ***CASSATA*** will not be available until you terminate the session through RELOAD / Terminate Session.
     - ### Make sure you have your passwords safe, else you might want to change them in your server.
