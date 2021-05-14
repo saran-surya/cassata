@@ -49,8 +49,9 @@
     // ... your declarations
     app.get('routes', async(req, res)=>{});
     ```
-- #### Accessing the data through proxy
+- #### Accessing the data through proxy.
   - ### ```cassata.getProxiedData(url, timeout)```
+  - ### !! Important Make sure you connect to the proxy before making API calls through ```cassata.getProxiedData()```
   - #### Parameters 
      - ##### url : Should be a string, and the url must yield a JSON for successful call back.
      - ##### timeout*<small>optional</small> : number :: The timeout to wait for response from proxy client ***DEFAULT : 8000ms***.
@@ -114,6 +115,8 @@
     proxyServer.listen(PORT, ()=>{
         console.log("Server started")
         // your initializations
+
+        // !! Provide a buffer so you can get enough time to activate the proxy.
     })
 - ### Complete Example
     ```
