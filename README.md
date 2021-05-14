@@ -169,7 +169,7 @@
 - ### That's it you have your proxy server, and you can host it in any location. 🛰 
 
 ### Accessing the Proxy (Client) 🐱
-- #### Once you have hosted your server, you can visit the proxy server room by just adding ```/proxyouter``` to the url of your server. Once done, this is what you will see.
+- #### Once you have hosted your server, you can visit the proxy server room by just adding ```/proxyrouter``` to the url of your server. Once done, this is what you will see.
 - ### ***CASSATA*** only allows one session per time, so once connected, another session of ***CASSATA*** will not be available until you terminate the session through RELOAD / Terminate Session.
     - ### Make sure you have your passwords safe, else you might want to change them in your server.
 - This is what it looks like on computers. ![](./readme_assets/userlogin.jpg)
