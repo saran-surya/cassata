@@ -109,7 +109,45 @@
         console.log("Server started")
         // your initializations
     })
- 
+- ### Complete Example 🦄
+    ```
+    //  Creating the express server
+    const express = require('express');
+    const app = express();
+
+    // Importing the Package
+    const cassata = require("cassata");
+    cassata.proxySettings.roomId = "@123$32";
+    cassata.proxySettings.password = "$ource#12";
+
+    // This will be your API end point that is only available in your location 
+    const API_END_POINT = "https://*" 
+
+    // Method 1 ~ Suitable for instant response.
+    app.get("/", async (req, res)=>{
+        console.log("This is from your get request section")
+        try {
+            const response = await cassata.getProxiedData(API_END_POINT);
+            // Process the response object here : {success : boolean, data : Response from API_END_POINT}
+        } catch (error) {
+            // Handle your errors here
+        }
+    });
+
+
+    // Method 2 ~ Suitable for making multiple API calls
+    async function foo(url){
+        try {
+            const response = await cassata.getProxiedData(url);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    //  ** Now you can call the function foo(url), at any point and get the response.
+
+    ```
 - ### That's it you have your proxy server, and you can host it in any location. 🛰 
 
 ### USAGE (Client) 🐱
