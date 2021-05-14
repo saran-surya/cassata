@@ -1,6 +1,6 @@
 {
   "name": "cassata",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A package, to proxy the server to your current location",
   "main": "index.js",
   "scripts": {

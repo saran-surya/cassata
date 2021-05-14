@@ -153,6 +153,15 @@
 
     //  ** Now you can call the function foo(url), at any point and get the response.
 
+    // ** set your static files
+    app.use(express.static(**));
+
+    // After setting up all the static files, make sure you create the proxy server,
+    let proxyServer = cassata.createProxy(app);
+    proxyServer.listen(process.ENV.PORT || 5000, ()=>{
+        console.log("Server started");
+        // Your initializations
+    })
     ```
 - ### That's it you have your proxy server, and you can host it in any location. 🛰 
 
