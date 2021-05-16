@@ -12,7 +12,7 @@
  - ### [Installing Cassata and usage](#installation-)
    - [Setting up the Proxy server](#setting-the-proxy-server-)
    - [Accessing from the client](#accessing-the-proxy-client-)
- - ### [Complete Example](#complete-example)
+ - ### [A complete solution](#complete-example)
 
 
 ### IDEA :
