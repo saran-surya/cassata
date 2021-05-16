@@ -5,10 +5,14 @@
 
 (* Free) ~ You have to use your resources to login to your server proxy room and set them up, and nothing much 😸.
 
-### Overview
- - [Quick Solution](#complete-example)
- - [The IDEA](#idea)
- - [Current progress and support](#progress)
+### A Quick overview
+ - ### [The IDEA](#idea-)
+   - [Concept behind CASSATA](#why-cassata-)
+   - [Current progress and support](#progress-)
+ - ### [Installing Cassata and usage](#installation-)
+   - [Setting up the Proxy server](#setting-the-proxy-server-)
+   - [Accessing from the client](#accessing-the-proxy-client-)
+ - ### [Complete Example](#complete-example)
 
 
 ### IDEA :
