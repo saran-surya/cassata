@@ -52,15 +52,13 @@ async function init() {
 
         // Creating a new proxyserver
         socket.on('CreateProxy', (room) => {
-            // console.log(room)
-            // console.log(proxySettings)
             if (proxySettings.roomId.toString() === room.roomId.toString() && room.password == proxySettings.password && !isRoom) {
                 if (!socketId) {
                     socketId = room.socketid
                     originSocket = socket
                     // Configuring the socket.id to make sure we only persist one session
                     socket["id"] = socketId
-                    console.log("proxy:server >> Proxy server has been connected and configured");
+                    console.log('\x1b[32m%s\x1b[0m', "proxy:server >> Proxy server has been connected and configured");
                     // socket.join()
                     isRoom = true;
                     isClosed = false;
@@ -76,7 +74,7 @@ async function init() {
         // override the connection state, so no further requests are made.
         socket.on("override", (id) => {
             if (isCredentials && id == socketId) {
-                console.log("proxy:server >> Overriding session")
+                console.log("\x1b[33m%s\x1b[0m", "proxy:server >> Overriding session")
                 isClosed = true;
                 isCredentials = false;
                 isRoom = false;
@@ -89,7 +87,7 @@ async function init() {
         // On the exit conditions for proxy disconnect
         socket.on("disconnect", () => {
             if (socket["id"] == socketId) {
-                console.log("proxy:server >> Disconnecting the origin socket")
+                console.log("\x1b[33m%s\x1b[0m", "proxy:server >> Disconnecting the origin socket")
                 isClosed = true;
                 isCredentials = false;
                 isRoom = false;
@@ -112,7 +110,7 @@ async function init() {
 function getProxiedData(url, timeout = 8000) {
     return new Promise((resolve, reject) => {
         if (!isProxyConnected()) {
-            console.log("\nproxy:server >> Use the method isProxyconnected() to check if the proxy end is connected")
+            console.log("\x1b[31m%s\x1b[0m", "\nproxy:server >> Use the method isProxyconnected() to check if the proxy client is connected")
             reject("Proxy server is not connected")
         }
         if (!isClosed && isCredentials && socketId) {
@@ -181,7 +179,7 @@ function createProxy(server) {
         init();
         return newServer;
     } catch (error) {
-        console.log(error.message)
+        console.log("\x1b[31m%s\x1b[0m",`proxy:server >> ${error.message}`)
         return false;
     }
 }
