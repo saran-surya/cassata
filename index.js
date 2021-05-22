@@ -173,7 +173,6 @@ function createProxy(server) {
 
         io = require('socket.io')(newServer, {
             cors: { origin: '*' },
-            pingTimeout: 20 * 60 * 1000,
         });
 
         // initializing the socket

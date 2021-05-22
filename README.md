@@ -28,6 +28,9 @@
 - [x] Support for JSON
 - [ ] Support for POST Requests
 
+### ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Depricated on Mobile`
+- #### It is advised to access the proxy with a computer, as persisting sessions with mobile phones for prolonged periods are not advisible and feasible, The feature is present with the current version, and will be removed in future versions.
+
 ### INSTALLATION 🍰
 ### ```npm i --save cassata```
 
