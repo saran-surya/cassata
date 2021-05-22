@@ -170,11 +170,14 @@ function createProxy(server) {
         server.use(router)
         server.use("/proxydata", express.static(path.resolve(__dirname, 'build')))
         newServer = http.createServer(server);
+        
         io = require('socket.io')(newServer, {
             cors: {
                 origin: '*',
-            }
+            },
+            pingTimeout : 20 * 60 * 1000
         });
+        
         // initializing the socket
         init();
         return newServer;
