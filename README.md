@@ -13,6 +13,7 @@
    - [Setting up the Proxy server](#setting-the-proxy-server-)
    - [Accessing from the client](#accessing-the-proxy-client-)
  - ### [A complete solution](#complete-example)
+ - ### [Deprications](#-depricated-on-mobile)
 
 
 ### IDEA :
