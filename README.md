@@ -90,7 +90,7 @@
         }
     }
 
-    // Call the function foo() at your will, and get the data.
+    // Call the function foo(url) with a await call 'await foo(url)' at your will, and get the data.
     ```
   - #### Example of Failure condition from proxy : 
     ![](./readme_assets/error.jpg)
@@ -162,7 +162,7 @@
         }
     }
 
-    //  ** Now you can call the function foo(url), at any point and get the response.
+    //  ** Now you can call the function foo(url) with a await call 'await foo(url)', at any point and get the response.
 
     // ** set your static files
     app.use(express.static(**));
