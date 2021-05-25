@@ -129,11 +129,13 @@ function getProxiedData(url, timeout = 8000) {
             if (finalResult.success) {
                 clearInterval(interval)
                 resolve(finalResult)
+                finalResult = {}
             }
             // on data failure
             if (finalResult.success == false) {
                 clearInterval(interval)
                 reject(finalResult)
+                finalResult = {}
             }
             // to watch the time
             msTimeout += 10;

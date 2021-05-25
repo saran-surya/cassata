@@ -1,4 +1,4 @@
-# CASSATA 🍥
+# CASSATA v1.1.1 🍥
 ## A NODE JS express server proxy, that's set as easy as a cake. 
 
 ### Hosting your server in a different location and need to access the data is only available in your location, this is a goto solution if you want to set your proxies for ***FREE \**** ..
