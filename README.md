@@ -19,7 +19,7 @@
  - ### [Deprications](#-depricated-on-mobile)
 
 ### Releases
-- v1.1.1 ~ stable pre-alpha
+- v1.1.2 ~ stable pre-alpha
   - Support for Arrays in getProxiedData()
 
 
