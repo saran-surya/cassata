@@ -100,6 +100,36 @@ async function init() {
     });
 }
 
+/**
+ * ### This function handles the array of urls passed to the function
+ * @param {Array<String>} arr 
+ * @param {Number=8000} timeout 
+ * @param {Number=0} index 
+ * @param {Array} result 
+ * @returns 
+ */
+function handleArrays(arr, timeout = 8000, index = 0, result = []) {
+    return new Promise((resolve, reject) => {
+        (async () => {
+            try {
+                // console.log(arr[index])
+                // console.log(index)
+                if (index >= arr.length) {
+                    resolve(result)
+                }
+                if (typeof (arr[index]) !== "string") {
+                    throw Error("\x1b[31mproxy:server >> The data type is not supported\x1b[0m")
+                }
+                let dt = await getProxiedData(arr[index], timeout)
+                result.push(dt)
+                resolve(await handleArrays(arr, timeout, index + 1, result))
+            } catch (error) {
+                reject(error)
+            }
+        })()
+    })
+}
+
 
 /**
  * ### perform get request using the proxied server.
@@ -108,39 +138,61 @@ async function init() {
  * @returns {Promise<JSON>} returns a promise of JSON from the request
  */
 function getProxiedData(url, timeout = 8000) {
-    return new Promise((resolve, reject) => {
-        if (!isProxyConnected()) {
-            console.log("\x1b[31m%s\x1b[0m", "\nproxy:server >> Use the method isProxyconnected() to check if the proxy client is connected")
-            reject("Proxy server is not connected")
-        }
-        if (!isClosed && isCredentials && socketId) {
-            originSocket.emit("getProxyData", { url, socketId })
-        } else {
-            sendAuthFailure();
-        }
-        // Checking data on regular intervals
-        let msTimeout = 0;
-        const interval = setInterval(() => {
-            if (msTimeout >= timeout) {
-                clearInterval(interval)
-                reject(`The proxy server did not respond within ${timeout} ms`)
+    try {
+        finalResult = {}
+        return new Promise(async (resolve, reject) => {
+            if (!typeof (url) === "string" && !Array.isArray(url)) {
+                console.log("\x1b[31m%s\x1b[0m", "\nproxy:server >> The Expected data type is either String or Array of strings")
+                reject("The data type required is either String or Array of Strings")
+                return
             }
-            // on data success
-            if (finalResult.success) {
-                clearInterval(interval)
-                resolve(finalResult)
-                finalResult = {}
+            if (!isProxyConnected()) {
+                console.log("\x1b[31m%s\x1b[0m", "\nproxy:server >> Use the method isProxyconnected() to check if the proxy client is connected")
+                reject("Proxy server is not connected")
+                return
             }
-            // on data failure
-            if (finalResult.success == false) {
-                clearInterval(interval)
-                reject(finalResult)
-                finalResult = {}
+
+            if (Array.isArray(url)) {
+                try {
+                    let resultArr = await handleArrays(url, timeout);
+                    resolve(resultArr)
+                } catch (error) {
+                    reject(error)
+                }
+
+            } else {
+                if (!isClosed && isCredentials && socketId) {
+                    originSocket.emit("getProxyData", { url, socketId })
+                } else {
+                    sendAuthFailure();
+                }
+                // Checking data on regular intervals
+                let msTimeout = 0;
+                const interval = setInterval(() => {
+                    if (msTimeout >= timeout) {
+                        clearInterval(interval)
+                        reject(`The proxy server did not respond within ${timeout} ms`)
+                        return
+                    }
+                    // on data success
+                    if (finalResult.success) {
+                        clearInterval(interval)
+                        resolve(finalResult)
+                    }
+                    // on data failure
+                    if (finalResult.success == false) {
+                        clearInterval(interval)
+                        reject(finalResult)
+                        return
+                    }
+                    // to watch the time
+                    msTimeout += 5;
+                }, 5);
             }
-            // to watch the time
-            msTimeout += 10;
-        }, 10);
-    })
+        })
+    } catch (error) {
+        return (error.message)
+    }
 }
 
 /**

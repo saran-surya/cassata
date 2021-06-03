@@ -1,11 +1,14 @@
-# CASSATA v1.1.1 🍥
+# CASSATA 🍥
 ## A NODE JS express server proxy, that's set as easy as a cake. 
 
 ### Hosting your server in a different location and need to access the data is only available in your location, this is a goto solution if you want to set your proxies for ***FREE \**** ..
 
 (* Free) ~ You have to use your resources to login to your server proxy room and set them up, and nothing much 😸.
 
+
+
 ### A Quick overview
+ - ### [Release notes](#releases)
  - ### [The IDEA](#idea-)
    - [Concept behind CASSATA](#why-cassata-)
    - [Current progress and support](#progress-)
@@ -14,6 +17,10 @@
    - [Accessing from the client](#accessing-the-proxy-client-)
  - ### [A complete solution](#complete-example)
  - ### [Deprications](#-depricated-on-mobile)
+
+### Releases
+- v1.1.1 ~ stable pre-alpha
+  - Support for Arrays in getProxiedData()
 
 
 ### IDEA :
@@ -27,6 +34,7 @@
 ### PROGRESS :
 - [x] Support for GET Requests   
 - [x] Support for JSON
+- [x] getProxiedData() supports Array of urls
 - [ ] Support for POST Requests
 
 ### ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Depricated on Mobile`
@@ -37,7 +45,7 @@
 
 ### Setting the PROXY (server) 👨‍💻
 - #### IMPORT the package.
-  ```
+  ```js
   let cassata = require('cassata');
   ```
 - #### IMPORTANT ! 🔓 
@@ -46,12 +54,12 @@
         - PASSWORD : admin
     #### CHANGING PROXY AUTH
     - ### ```cassata.proxySettings```
-    ```
+    ```js
     cassata.proxySettings.roomId = "Your Room ID";
     cassata.proxySettings.password = "Your Password";
     ```
 - #### Create your express server with all the required fields,
-    ```
+    ```js
     const express = require('express');
     const app = express();
     // ... your declarations
@@ -61,14 +69,14 @@
   - ### ```cassata.getProxiedData(url, timeout)```
   - ### !! Important Make sure you connect to the proxy before making API calls through ```cassata.getProxiedData()```
   - #### Parameters 
-     - ##### url : Should be a string, and the url must yield a JSON for successful call back.
-     - ##### timeout*<small>optional</small> : number :: The timeout to wait for response from proxy client ***DEFAULT : 8000ms***.
+     - #### url : The. url can be a string or an Array of strings, the end URL when accessed must yield a JSON.
+     - #### timeout *<small>optional</small> : number :: The timeout to wait for response from proxy client ***DEFAULT : 8000ms***.
   - #### Returns Object {success, data}
     - ##### success : true on success || false on error
     - ##### data : Response from proxy on success || Error on failure
   - You can wrap the method inside a get request and wait for it, or also have seperate method and call them.
   - ##### Method 1
-    ```
+    ```js
     app.get("/samplRoute", async(req, res)=>{
         try{
             const response = await cassata.getProxiedData("the url that you want to hit");
@@ -79,10 +87,10 @@
     })
     ```
   - ##### Method 2 (Feasible for accessing data on intervals)
-    ```
+    ```js
     //Creating an async function, 
     async function foo(){
-         try{
+            try{
             const response = await cassata.getProxiedData("the url that you want to hit");
             // process the response.
         } catch (error) {
@@ -91,6 +99,23 @@
     }
 
     // Call the function foo(url) with a await call 'await foo(url)' at your will, and get the data.
+    ```
+  - ### Usage with loops, or continuous data fetch
+    - #### Create an Array of url's and pass them to the getProxiedData function, and make sure to await for the results.
+    ```js
+    // Prepare the array of urls that you need to get the data from the proxy client
+    let urlsArr = ["https://", "https://"] //Array of urls
+
+    app.get("/vaccine", async (req, res) => {
+        try {
+            // Pass the Array in the method to get the results in the order you passed in
+            let results = await cassata.getProxiedData(urlsArr)
+            //Handle the results
+            res.status(200).send(results)
+        } catch (error) {
+            console.log(error.message)
+        }
+    })
     ```
   - #### Example of Failure condition from proxy : 
     ![](./readme_assets/error.jpg)
@@ -103,7 +128,7 @@
     - ### ```cassata.createProxy(server)```
         - #### server : The express app that you created,
         - #### Returns : Proxied server / false on error. 
-    ```
+    ```js
     const express = require('express');
     const app = express();
 
@@ -127,7 +152,7 @@
         // !! Provide a buffer so you can get enough time to activate the proxy.
     })
 - ### Complete Example
-    ```
+    ```js
     //  Creating the express server
     const express = require('express');
     const app = express();
