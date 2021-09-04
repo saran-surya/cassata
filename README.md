@@ -123,7 +123,7 @@
     - ### ```cassata.isProxyConnected()```
         - #### Returns true/false on client connection status.
  - #### Final steps
-    - ##### *Make sure you add all the required data and set all the static files using express.static(), before calling this method.
+    - ### *Make sure you add all the required data and set all the static files using express.static(), before calling this method.
 
     - ### ```cassata.createProxy(server)```
         - #### server : The express app that you created,
